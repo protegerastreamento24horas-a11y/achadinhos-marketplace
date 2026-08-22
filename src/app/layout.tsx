@@ -13,6 +13,21 @@ export const metadata: Metadata = {
   title: "Achadinhos | Menores Precos da Internet",
   description:
     "Encontre os melhores achadinhos com desconto nas principais lojas online do Brasil. Shopee, Amazon e Mercado Livre com os menores precos.",
+  keywords: ["achadinhos", "descontos", "ofertas", "shopee", "amazon", "mercado livre", "compras online", "cupom", "cashback"],
+  openGraph: {
+    title: "Achadinhos | Menores Precos da Internet",
+    description: "Encontre os melhores achadinhos com desconto nas principais lojas online do Brasil.",
+    url: "https://achadinhos-marketplace.vercel.app",
+    siteName: "Achadinhos Marketplace",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Achadinhos | Menores Precos da Internet",
+    description: "Encontre os melhores achadinhos com desconto nas principais lojas online do Brasil.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

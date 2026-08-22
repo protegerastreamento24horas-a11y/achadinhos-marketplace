@@ -3,9 +3,13 @@
 import { useMemo, useState } from "react";
 import { products } from "@/data/products";
 import Hero from "@/components/Hero";
+import RecentPurchases from "@/components/RecentPurchases";
+import BenefitsBar from "@/components/BenefitsBar";
 import ProductCard from "@/components/ProductCard";
 import CategoryFilter from "@/components/CategoryFilter";
 import Carousel, { CarouselItem } from "@/components/Carousel";
+import TopSellingSection from "@/components/TopSellingSection";
+import FlashOffersSection from "@/components/FlashOffersSection";
 
 export default function Home() {
   const [category, setCategory] = useState("Todos");
@@ -22,6 +26,8 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <RecentPurchases />
+      <BenefitsBar />
 
       {/* Flash deals */}
       <section id="ofertas" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
@@ -37,6 +43,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <TopSellingSection />
+      <FlashOffersSection />
 
       {/* Shopee carousel */}
       <section className="bg-orange-50/50 border-y border-orange-100/50">
