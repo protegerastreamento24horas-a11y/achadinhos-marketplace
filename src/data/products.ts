@@ -53,7 +53,7 @@ export const products: Product[] = [
     description: "Fone de ouvido sem fio Philips TWS com Bluetooth, microfone integrado e ate 24 horas de bateria. Preto.",
     price: "R$ 99,99",
     originalPrice: "R$ 144,00",
-    image: "https://images.philips.com/is/image/philipsconsumer/5d698236138c4a7984eeb19c0016bb19-001?$png$&wid=700&hei=700",
+    image: "/fone-philips-tat1109bk.jpg",
     platform: "amazon",
     affiliateLink: "https://www.amazon.com.br/PHILIPS-TAT1109BK-00-Bluetooth-Microfone/dp/B0DVMQVVDY?tag=achadinh026c7-20",
     category: "Tecnologia",
