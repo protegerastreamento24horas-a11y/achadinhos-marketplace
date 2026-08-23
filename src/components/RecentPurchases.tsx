@@ -16,7 +16,7 @@ const purchases = [
 ];
 
 const platformColors: Record<string, string> = {
-  Shopee: "from-orange-500/20 to-orange-600/10 border-orange-500/20",
+  Shopee: "from-yellow-500/20 to-yellow-600/10 border-yellow-500/20",
   Amazon: "from-amber-500/20 to-amber-600/10 border-amber-500/20",
   "Mercado Livre": "from-yellow-500/20 to-yellow-600/10 border-yellow-500/20",
 };
@@ -48,7 +48,7 @@ export default function RecentPurchases() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <div
-                  className="relative flex items-center gap-3 border border-gray-100 bg-white backdrop-blur-md px-5 py-3 transition-all duration-500 hover:border-[#FF4B2B]/30 hover:shadow-[0_0_30px_rgba(255,75,43,0.08)]"
+                  className="relative flex items-center gap-3 border border-gray-100 bg-white backdrop-blur-md px-5 py-3 transition-all duration-500 hover:border-[#FCD208]/30 hover:shadow-[0_0_30px_rgba(252,210,8,0.08)]"
                   style={{
                     transform: "rotateY(-2deg) rotateX(1deg)",
                     transformStyle: "preserve-3d",
@@ -65,7 +65,7 @@ export default function RecentPurchases() {
                   <div className="flex flex-col min-w-0">
                     <span className="text-[11px] font-bold text-gray-700 truncate">{p.name}</span>
                     <span className="text-[10px] text-gray-400 truncate">
-                      <span className="text-[#FF4B2B]/80 font-semibold">{p.product}</span>
+                      <span className="text-[#FCD208]/80 font-semibold">{p.product}</span>
                     </span>
                   </div>
 

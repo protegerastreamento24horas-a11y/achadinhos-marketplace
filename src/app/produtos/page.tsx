@@ -51,7 +51,7 @@ export default function ProductsPage() {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="text-sm border border-gray-200 bg-white px-3 py-2 text-gray-700 focus:border-[#FF4B2B] focus:outline-none"
+          className="text-sm border border-gray-200 bg-white px-3 py-2 text-gray-700 focus:border-[#FCD208] focus:outline-none"
         >
           <option value="recent">Todos</option>
           <option value="discount">Maior desconto</option>

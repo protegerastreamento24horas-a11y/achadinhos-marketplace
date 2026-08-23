@@ -12,7 +12,7 @@ export default function TopSellingSection() {
   if (topSelling.length === 0) return null;
 
   return (
-    <section className="py-8 sm:py-12">
+    <section className="py-6 sm:py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-4">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
@@ -25,7 +25,7 @@ export default function TopSellingSection() {
             <CarouselItem key={product.id}>
               <div className="relative">
                 {i < 3 && (
-                  <div className="absolute -top-2 -left-1 z-10 text-xs font-bold bg-gradient-to-r from-[#FF4B2B] to-[#FF416C] text-white h-6 w-6 flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-2 -left-1 z-10 text-xs font-bold bg-gradient-to-r from-[#FCD208] to-[#E6B800] text-white h-6 w-6 flex items-center justify-center shadow-lg">
                     {i + 1}
                   </div>
                 )}

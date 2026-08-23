@@ -1,64 +1,106 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
+import Image from "next/image";
 
 const banners = [
-  { title: "Achados do Dia", subtitle: "Produtos com ate 80% OFF", cta: "Ver Agora", href: "#ofertas" },
-  { title: "Ofertas Relampago", subtitle: "Tempo limitado, pecas unicas", cta: "Correr!", href: "#ofertas" },
-  { title: "Novidades Shopee", subtitle: "Os ultimos lancamentos com desconto", cta: "Explorar", href: "#ofertas" },
+  {
+    src: "/banner-1.png",
+    alt: "Ofertas do Dia - Ate 50% OFF",
+    title: "Ofertas Imperdiveis",
+    subtitle: "Ate 50% de desconto em selecionados",
+  },
+  {
+    src: "/banner-2.png",
+    alt: "Frete Gratis em Todo Site",
+    title: "Frete Gratis",
+    subtitle: "Compre sem se preocupar com o frete",
+  },
+  {
+    src: "/banner-3.png",
+    alt: "Novidades da Semana",
+    title: "Chegou Novidade",
+    subtitle: "Veja os lancamentos mais quentes",
+  },
+  {
+    src: "/banner-4.png",
+    alt: "Promocao Especial",
+    title: "Super Promocao",
+    subtitle: "Descontos exclusivos por tempo limitado",
+  },
 ];
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % banners.length);
+  const goToSlide = useCallback((index: number) => {
+    const el = carouselRef.current;
+    if (!el) return;
+    el.scrollTo({ left: el.offsetWidth * index, behavior: "smooth" });
+    setCurrentIndex(index);
   }, []);
 
-  useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [next]);
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % banners.length);
+  }, []);
 
-  const b = banners[current];
+  // Auto-rotate
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: carouselRef.current.offsetWidth * currentIndex, behavior: "smooth" });
+    }
+  }, [currentIndex]);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#FF4B2B] to-[#FF416C]">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 h-40 w-40 rounded-full bg-white/30 blur-3xl" />
-        <div className="absolute bottom-10 right-10 h-60 w-60 rounded-full bg-white/20 blur-3xl" />
+    <section className="relative w-full overflow-hidden">
+      <div
+        ref={carouselRef}
+        className="flex h-auto overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x"
+      >
+        {banners.map((banner, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 w-full snap-start relative aspect-[32/11] overflow-hidden"
+            style={{ backgroundColor: "#f5f5f5" }}
+          >
+            <Image
+              src={banner.src}
+              alt={banner.alt}
+              width={1600}
+              height={550}
+              className="w-full h-full object-contain"
+              priority={i === 0}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+          </div>
+        ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            {b.title}
-          </h1>
-          <p className="text-lg sm:text-xl text-white/80 mb-8">
-            {b.subtitle}
-          </p>
-          <Link
-            href={b.href}
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#FF4B2B] px-8 py-4 text-base font-bold hover:bg-gray-50 transition-all hover:scale-[1.02] active:scale-95 shadow-lg"
+      {/* Indicators - Progress bar style */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {banners.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goToSlide(i)}
+            className="relative w-10 h-1.5 rounded-full bg-white/30 hover:bg-white/50 transition-all overflow-hidden"
+            aria-label={`Slide ${i + 1}`}
           >
-            {b.cta}
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-          {banners.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-2 transition-all ${i === current ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"}`}
-              aria-label={`Banner ${i + 1}`}
+            <span
+              className="absolute left-0 top-0 h-full bg-white transition-transform duration-500 ease-out origin-left"
+              style={{
+                transform: i === currentIndex ? "scaleX(1)" : i < currentIndex ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: i < currentIndex ? "left" : "right",
+              }}
             />
-          ))}
-        </div>
+          </button>
+        ))}
       </div>
     </section>
   );

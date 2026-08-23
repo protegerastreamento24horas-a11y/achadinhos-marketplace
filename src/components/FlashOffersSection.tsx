@@ -10,7 +10,7 @@ export default function FlashOffersSection() {
   if (offers.length === 0) return null;
 
   return (
-    <section className="py-8 sm:py-12">
+    <section className="py-6 sm:py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-4">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900">

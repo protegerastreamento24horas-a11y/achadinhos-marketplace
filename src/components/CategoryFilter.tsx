@@ -16,8 +16,8 @@ export default function CategoryFilter({ selected, onSelect }: CategoryFilterPro
           onClick={() => onSelect(cat.id)}
           className={`flex items-center gap-1.5 flex-shrink-0 px-3 py-1.5 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
             selected === cat.id
-              ? "bg-[#FF4B2B] text-white shadow-sm"
-              : "bg-gray-100 text-gray-600 border border-gray-200 hover:border-[#FF4B2B]/30 hover:text-[#FF4B2B] hover:bg-red-50"
+              ? "bg-[#FCD208] text-white shadow-sm"
+              : "bg-gray-100 text-gray-600 border border-gray-200 hover:border-[#FCD208]/30 hover:text-[#FCD208] hover:bg-red-50"
           }`}
         >
           <span className="text-xs">{cat.icon}</span>

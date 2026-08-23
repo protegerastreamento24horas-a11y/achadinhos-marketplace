@@ -19,10 +19,10 @@ export default function Carousel({ id, children }: CarouselProps) {
   return (
     <div>
       <div className="flex gap-2 justify-end mb-4">
-        <button onClick={() => scroll("left")} className="h-8 w-8 border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-[#FF4B2B]/40 hover:text-[#FF4B2B] transition-all" aria-label="Anterior">
+        <button onClick={() => scroll("left")} className="h-8 w-8 border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-[#FCD208]/40 hover:text-[#FCD208] transition-all" aria-label="Anterior">
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <button onClick={() => scroll("right")} className="h-8 w-8 border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-[#FF4B2B]/40 hover:text-[#FF4B2B] transition-all" aria-label="Proximo">
+        <button onClick={() => scroll("right")} className="h-8 w-8 border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-[#FCD208]/40 hover:text-[#FCD208] transition-all" aria-label="Proximo">
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
